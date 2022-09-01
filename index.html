@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    
+	<meta name="viewport" content="width=device-width">
+	<link rel="stylesheet" href="./css/mdui.min.css"/>
+	<script> if (typeof module === 'object'){window.module = module; module  = undefined;}</script>
+    <script> if (window.module) module = window.moudle;</script>
+	<script src="./js/mdui.min.js"></script>
+	<script src="./js/jquery.min.js"></script>
+    <link href="./styles.css" rel="stylesheet">
+    <title>Umbreyta</title>
+  </head>
+  <body class="mdui-theme-primary-indigo mdui-theme-accent-pink">
+	<div class="mdui-container-fluid">
+		<div class="mdui-tab mdui-color-theme mdui-tab-full-width mdui-hidden" mdui-tab>
+		  <a href="#example7-tab1" class="mdui-ripple mdui-ripple-white">
+			<i class="mdui-icon material-icons">phone</i>
+			<label>recents</label>
+		  </a>
+		  <a href="#example7-tab2" class="mdui-ripple mdui-ripple-white">
+			<i class="mdui-icon material-icons">favorite</i>
+			<label>favorites</label>
+		  </a>
+		  <a href="#example7-tab3" class="mdui-ripple mdui-ripple-white">
+			<i class="mdui-icon material-icons">perm_contact_calendar</i>
+			<label>nearby</label>
+		  </a>
+		</div>
+		
+		<div class="mdui-valign" style="height:100%,width:100%" id="display-welcome-out">
+		<div class="mdui-typo-title mdui-center" style="width: 50%;text-align:center" id="display-welcome"></div>
+	  </div>
+	  <div id="appMain" class="mdui-col-xs-12 mdui-valign mdui-hidden">
+		<div class="mdui-col-xs-5">
+		<div id="holderOut" style=";position:fixed;top:5%;left:5%" class="mdui-col-xs-3">
+		  <!--<input type="file" class="mdui-btn" value="在此选择文件"></input>-->
+		  <div id="holder" onclick="$('#holderClickUpload').click();" style="width:100%,margin:10% auto;text-align:center;font-size:20px;border-style:solid;border-color:#cccccc;border-radius:5%;background-color:#eeeeee" class="mdui-hoverable mdui-col-xs-12">
+			<br><span style="margin:auto 2%">拖拽文件至此</span><br><br>
+		  </div>
+		  <input type="file" class="mdui-hidden" id="holderClickUpload"></input>
+		</div>
+		</div>
+		<div class="mdui-divider"></div>
+		<div class="mdui-table-fluid mdui-col-xs-7 mdui-col-offset-4" id="filelist">
+		  <table class="mdui-table mdui-table-hoverable mdui-table-selectable" id="fileSheet">
+			<thead>
+			  <tr>
+			  
+				<th>操作</th>
+				<!--<th>#</th>-->
+				<th>文件名称</th>
+				<th>文件大小</th>
+				<th>文件类型</th>
+				<th>目标类型</th>
+			  </tr>
+			</thead>
+			<tbody id="filelistBody">
+			</tbody>
+		  </table>
+		</div>
+		<button class="mdui-fab mdui-color-theme-accent mdui-ripple mdui-fab-fixed" id="sendBtn" disabled onclick="process()">
+		  <i class="mdui-icon material-icons">send</i>
+		</button>
+	  </div>
+	  
+		<div class="mdui-dialog" id="addTaskDialog">
+		  <div class="mdui-dialog-title">添加新的任务...</div>
+		  <div class="mdui-dialog-content">
+		  <br>
+			<form id="destFileTypeList">
+			  <span class="mdui-subtitle">目标文件类型</span>
+			  <label class="mdui-radio">
+				<input type="radio" name="destType" val="mp4" checked/>
+				<i class="mdui-radio-icon"></i>
+				MP4
+			  </label>
+			  <label class="mdui-radio">
+				<input type="radio" name="destType" val="avi"/>
+				<i class="mdui-radio-icon"></i>
+				AVI
+			  </label>
+			  <label class="mdui-radio">
+				<input type="radio" name="destType" val="mov"/>
+				<i class="mdui-radio-icon"></i>
+				MOV
+			  </label>
+			  <label class="mdui-radio">
+				<input type="radio" name="destType" val="mkv"/>
+				<i class="mdui-radio-icon"></i>
+				MKV
+			  </label>
+			</form>
+			
+		  </div>
+		  <div class="mdui-dialog-actions">
+			<button class="mdui-btn mdui-ripple" mdui-dialog-cancel>取消</button>
+			<button class="mdui-btn mdui-btn-dense mdui-ripple" mdui-dialog-confirm id="addTaskDialogConfirm" onclick='addTask(file,$("input[name=destType]:checked").attr("val"))'>完成</button>
+		  </div>
+		</div>
+		<div class="mdui-progress mdui-hidden" style="width:100%;position:fixed;bottom:5px" id="processProgress">
+		  <div class="mdui-progress-indeterminate"></div>
+		</div>
+	</div>
+	  
+    <!-- You can also require other files to run in this process -->
+    <script src="./renderer.js"></script>
+	<script>
+  
+</script>
+  </body>
+</html>

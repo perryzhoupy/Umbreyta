@@ -1,0 +1,30 @@
+{
+  "name": "Umbreyta",
+  "version": "0.1",
+  "description": "Umbreyta",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "https://github.com/electron/electron-quick-start",
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial",
+    "demo"
+  ],
+  "author": "perryzhoupy",
+  "license": "GPL",
+  "devDependencies": {
+    "electron": "latest"
+  },
+  "webPreferences": {
+    "nodeIntegration": true,
+    "contextIsolation": false,
+    "enableRemoteModule": true
+  },
+  "dependencies": {
+    "@electron/remote": "^2.0.8"
+  }
+}
